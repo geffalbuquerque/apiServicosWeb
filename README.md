@@ -12,6 +12,7 @@
 - Json Web Token (jwt)
 - Bcrypt
 - Dotenv
+- Nodemon
 
 ## Instalação
 
@@ -29,5 +30,19 @@ Para instalar o Mongoose, Express, JWT, Bcrypt e Dotenv, pode usar um comando vi
 ```
 npm install mongoose express jsonwebtoken bcrypt dotenv
 ```
+
+Instalar o Nodemon
+```
+npm install --save-dev nodemon
+```
+
+## Rodando o Server
+
+Comando para rodar o server
+```
+node nomedoarquivo.js
+```
+Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, nesse caso o mongoose.
+
  
  
