@@ -25,9 +25,16 @@
    
    Obs: Instalar a versão 16.17.0 LTS.
    
+### Acessar a pasta do projeto
+
+É necessário acessar a pasta do projeto pelo terminal antes de instalar os requisitos via NPM. Exemplo:
+```
+cd users/fulanodasilva/Documents/projetoAPI
+```
+   
 ### Instalar os outros requisitos
 
-Para instalar o Mongoose, Express, JWT, Bcrypt e Dotenv, pode usar um comando via NPM:
+Para instalar o Mongoose, Express, JWT, Bcrypt e Dotenv, pode usar um comando via NPM dentro da pasta do projeto via terminal:
 ```
 npm install mongoose express jsonwebtoken bcrypt dotenv
 ```
