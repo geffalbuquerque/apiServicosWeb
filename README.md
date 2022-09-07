@@ -86,22 +86,47 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
     Utilizar o Token gerado no login para utilizar as rotas consulta, atualização e exclusão.
 
 ### Consultar Lista de Usuários
-
-### Criar um Usuário:
   
-  Criar um método POST no Postman e inserir a URL:
+  Criar um método GET no Postman e inserir a URL:
   ```
-  http://localhost:3000/users/
+  http://localhost:3000/users
+  ```
+  **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+  
+  ### Atualizar um Usuário:
+  
+  Criar um método PUT no Postman e inserir a URL:
+  ```
+  http://localhost:3000/users/{id}
   ```
   **Body:**
  ```   
   {
     "name": "teste da silva",
-    "email": "teste@gmail.com",
-    "oab": 123456,
-    "password": "teste",
-    "confirmpassword": "teste"
+    "email": "teste@gmail.com"
 }
 ```
+  Obs: Na URL, substituir o "id" pelo número do id do usuário que deseja atualizar.
+  
+ **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+ 
+ 
+ 
+### Excluir um Usuário:
+  
+  Criar um método DELETE no Postman e inserir a URL:
+  ```
+  http://localhost:3000/users/{id}
+  ```
+  Obs: Na URL, substituir o "id" pelo número do id do usuário que deseja atualizar.
+  
+  **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+  
  
  
