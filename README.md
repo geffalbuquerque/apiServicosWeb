@@ -13,12 +13,13 @@
 - Bcrypt
 - Dotenv
 - Nodemon
+- Postman
 
 ## Instalação
 
 ### Instalar o Node.js
 
-  **Windows**
+  **Windows 64-bit**
   
    https://nodejs.org/en/
    
@@ -36,13 +37,37 @@ Instalar o Nodemon
 npm install --save-dev nodemon
 ```
 
+### Instalar o Postman
+ 
+ **Windows 64-bit**
+ 
+ https://www.postman.com/downloads/
+
 ## Rodando o Server
 
-Comando para rodar o server
+Comando para rodar o server:
 ```
 node nomedoarquivo.js
 ```
 Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, nesse caso o mongoose.
 
+## Utilizando as rotas
+
+### Criar um Usuário:
+  
+  Criar um método POST no Postman e inserir a URL:
+  ```
+  http://localhost:3000/users/auth/register
+  ```
+  **Body:**
+ ```   
+  {
+    "name": "testeoab",
+    "email": "testeo@gmail.com",
+    "oab": 123456,
+    "password": "testes",
+    "confirmpassword": "testes"
+}
+```
  
  
