@@ -62,11 +62,45 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
   **Body:**
  ```   
   {
-    "name": "testeoab",
-    "email": "testeo@gmail.com",
+    "name": "teste da silva",
+    "email": "teste@gmail.com",
     "oab": 123456,
-    "password": "testes",
-    "confirmpassword": "testes"
+    "password": "teste",
+    "confirmpassword": "teste"
+}
+```
+
+### Fazer Login com Usuário:
+
+  ```
+  http://localhost:3000/users/auth/login
+  ```
+   **Body:**
+ ```   
+  {
+    "email": "teste@gmail.com",
+    "password": "teste",
+}
+```
+  **TOKEN:**
+    Utilizar o Token gerado no login para utilizar as rotas consulta, atualização e exclusão.
+
+### Consultar Lista de Usuários
+
+### Criar um Usuário:
+  
+  Criar um método POST no Postman e inserir a URL:
+  ```
+  http://localhost:3000/users/
+  ```
+  **Body:**
+ ```   
+  {
+    "name": "teste da silva",
+    "email": "teste@gmail.com",
+    "oab": 123456,
+    "password": "teste",
+    "confirmpassword": "teste"
 }
 ```
  
