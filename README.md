@@ -135,5 +135,93 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
   
   No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
   
+  
+  ### Cadastrar um Cliente:
+  
+  Criar um método POST no Postman e inserir a URL:
+  ```
+  http://localhost:3000/clientes/insertNewClient
+  ```
+  **Body:**
+ ```   
+  {
+    "name": "Teste Silveira da Silva",
+    "cpf": 1234567890,
+    "email": "testedasilva@gmail.com",
+    "phoneNumber": "51 999999999",
+    "processNumber": "154732854677.28332.2813441.156890",
+    "accessKey": 123456
+}
+```
+  **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+
+
+### Consultar Lista de Clientes
+  
+  Criar um método GET no Postman e inserir a URL:
+  ```
+  http://localhost:3000/clientes
+  ```
+  **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+  
+  
+ ### Atualizar os dados de um Cliente:
+  
+  Criar um método PUT no Postman e inserir a URL:
+  ```
+  http://localhost:3000/clientes/updateById/{id}
+  ```
+  **Body:**
+ ```   
+  {
+    {
+    "name": "Teste de Atualização",
+    "cpf": 987654321,
+    "email": "testedeatualizacao@teste.com",
+    "phoneNumber": "51 999999999"
+}
+}
+```
+  Obs: Na URL, substituir o "id" pelo número do id do cliente que deseja atualizar.
+  
+ **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+  
+  
+  ### Excluir um Usuário:
+  
+  Criar um método DELETE no Postman e inserir a URL:
+  ```
+  http://localhost:3000/clientes/deleteById/{id}
+  ```
+  Obs: Na URL, substituir o "id" pelo número do id do cliente que deseja atualizar.
+  
+  **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+  
+  
+  ### Consultar um Usuário pelo Nome
+  
+  Criar um método GET no Postman e inserir a URL:
+  ```
+  http://localhost:3000/clientes/findByName/{name}
+  ```
+  Obs: Na URL, substituir o "name" pelo nome do cliente que deseja atualizar.
+  
+  **Authorization:**
+  
+  No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+  
+  
+  
+
+
+  
  
  
