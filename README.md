@@ -113,7 +113,7 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
   {
     "name": "teste da silva",
     "email": "teste@gmail.com"
-}
+  }
 ```
   Obs: Na URL, substituir o "id" pelo número do id do usuário que deseja atualizar.
   
@@ -151,7 +151,7 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
     "phoneNumber": "51 999999999",
     "processNumber": "154732854677.28332.2813441.156890",
     "accessKey": 123456
-}
+  }
 ```
   **Authorization:**
   
@@ -178,13 +178,11 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
   **Body:**
  ```   
   {
-    {
     "name": "Teste de Atualização",
     "cpf": 987654321,
     "email": "testedeatualizacao@teste.com",
     "phoneNumber": "51 999999999"
-}
-}
+  }
 ```
   Obs: Na URL, substituir o "id" pelo número do id do cliente que deseja atualizar.
   
@@ -217,6 +215,13 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
   **Authorization:**
   
   No campo "Type", selecionar "Bearer Token" e inserir o token gerado no login.
+  
+  
+  #Workspace do Postman
+  
+  ```
+  https://www.getpostman.com/collections/5501028f92738692e843
+  ```
   
   
   
