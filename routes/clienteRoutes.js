@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 //CREATE - Criação de Dados
 router.post('/insertNewClient', checkToken, async (req, res) => {
 
-    const {name, cpf, email, phoneNumber, processNumber, accessKey} = req.body
+    const {name, cpf, email, phoneNumber, processNumber, accessKey, description} = req.body
     const clientExists = await Cliente.findOne({cpf: cpf});
 
     if(clientExists){
@@ -30,6 +30,7 @@ router.post('/insertNewClient', checkToken, async (req, res) => {
         phoneNumber,
         processNumber,
         accessKey,
+        description,
     }
 
     try {
@@ -80,7 +81,7 @@ router.get('/findByName/:name', checkToken, async (req, res) => {
 router.put('/updateById/:id', checkToken, async (req, res) => {
 
     const id = req.params.id
-    const {name, cpf, email, phoneNumber, processNumber, accessKey} = req.body
+    const {name, cpf, email, phoneNumber, processNumber, accessKey, description} = req.body
     const cliente = {
         name,
         cpf,
@@ -88,6 +89,7 @@ router.put('/updateById/:id', checkToken, async (req, res) => {
         phoneNumber,
         processNumber,
         accessKey,
+        description
     }
 
     try {

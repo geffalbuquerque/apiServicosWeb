@@ -6,7 +6,8 @@ const Cliente = mongoose.model('Cliente', {
     email: String,
     phoneNumber: String,
     processNumber: String,
-    accessKey: Number
+    accessKey: Number,
+    description: String,
 
 })
 module.exports = Cliente;
