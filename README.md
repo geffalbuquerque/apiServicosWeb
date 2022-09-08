@@ -1,4 +1,4 @@
-# **Sistema de Cadastro de Clientes para Escritório de Advocacia**
+# **Sistema de Cadastro de Clientes para Escritório de Advocacia Lorena Pires**
 
 ## Descrição:
 
