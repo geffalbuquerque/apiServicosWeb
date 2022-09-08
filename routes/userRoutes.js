@@ -136,7 +136,7 @@ router.delete('/:id', checkToken, async(req, res) => {
     const user = await User.findOne({_id: id})
 
     if(!user){
-        res.status(404).json({message: "Usuário não encontrado."})
+        res.status(404).json({message: "Usuário não encontrado. Verifique o ID!"})
         return
     }
 
