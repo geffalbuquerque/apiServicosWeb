@@ -4,10 +4,10 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 
 //CREATE - Criação de Dados
-router.post('/', async (req, res) => {
+router.post('/insertNewClient', checkToken, async (req, res) => {
 
     const {name, cpf, email, phoneNumber, processNumber, accessKey} = req.body
-    const clientExists = Cliente.findOne({cpf: cpf});
+    const clientExists = await Cliente.findOne({cpf: cpf});
 
     if(clientExists){
         return res.status(422).json({message: 'Já existe um cliente cadastrado com este CPF!'})
@@ -21,6 +21,7 @@ router.post('/', async (req, res) => {
     if(!phoneNumber) {
         return res.status(400).json({message: 'O nome é obrigatório!'})
     }
+
 
     const cliente = {
         name,
@@ -41,9 +42,9 @@ router.post('/', async (req, res) => {
     }
 })
 
-//READ - Leitura dos Dados
+// READ - Lista de Clientes
 
-router.get('/', async (req, res) => {
+router.get('/', checkToken, async (req, res) => {
     try {
 
         const cliente = await Cliente.find()
@@ -54,7 +55,8 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/findById/:id', async (req, res) => {
+// READ - Encontrar Cliente pelo ID
+router.get('/findById/:id', checkToken, async (req, res) => {
     const id = req.params.id
 
     try {
@@ -75,7 +77,7 @@ router.get('/findById/:id', async (req, res) => {
 
 
 //UPDATE - Alteração de Dados
-router.put('/updateById/:id', async (req, res) => {
+router.put('/updateById/:id', checkToken, async (req, res) => {
 
     const id = req.params.id
     const {name, cpf, email, phoneNumber, processNumber, accessKey} = req.body
@@ -107,7 +109,7 @@ router.put('/updateById/:id', async (req, res) => {
 
 //DELETE - Deletar Dados
 
-router.delete('/deleteById/:id', async(req, res) => {
+router.delete('/deleteById/:id', checkToken, async(req, res) => {
     const id = req.params.id
 
     const cliente = await Cliente.findOne({_id: id})
@@ -124,8 +126,27 @@ router.delete('/deleteById/:id', async(req, res) => {
     }catch (err) {
         res.status(500).json({error:err})
     }
-
-
 })
+
+//-----------------------------------------------------------------------
+function checkToken(req, res, next) {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if(!token) {
+        return res.status(401).json({message: 'Acesso negado!'})
+    }
+
+    try {
+        const secret = process.env.SECRET
+
+        jwt.verify(token, secret);
+
+        next();
+
+    }catch(error) {
+        res.status(422).json({message: 'Token Inválido!'})
+    }
+}
 
 module.exports = router;

@@ -4,7 +4,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 
-router.post('/auth/register', checkToken, async (req, res) => {
+router.post('/auth/register', async (req, res) => {
     
     const {name, email, oab, password, confirmpassword} = req.body;
     const userExists = await User.findOne({email: email});
@@ -19,31 +19,32 @@ router.post('/auth/register', checkToken, async (req, res) => {
         password:passwordHash,
     });
 
-    if(userExists){
-        return res.status(422).json({message: 'Já existe um usuário cadastrado com este e-mail!'})
-    }
     if(!name){
         return res.status(400).json({message: 'O nome é obrigatório!'})
     }
-
+    
     if(!email){
         return res.status(400).json({message: 'O email é obrigatório!'})
     }
-
+    
     if(!oab){
         return res.status(400).json({message: 'O Número da OAB é obrigatório!'})
     }
-
+    
     if(!password){
         return res.status(400).json({message: 'A senha é obrigatória!'})
     }
-
+    
     if(confirmpassword != password){
         return res.status(400).json({message: 'Senhas não compatíveis! Confira sua senha e tente novamente.'})
     }
 
+    if(userExists){
+        return res.status(422).json({message: 'Já existe um usuário cadastrado com este e-mail!'})
+    }
+    
     try {
-
+        
         await user.save();
         return res.status(201).send('Usuário registrado com sucesso!');
 
@@ -57,22 +58,25 @@ router.post('/auth/register', checkToken, async (req, res) => {
 router.post('/auth/login', async(req, res) =>{
     const { email, password } = req.body;
     const user = await User.findOne({email: email});
-    const checkPassword = await bcrypt.compare(password, user.password);
+
+    if(!email){
+        return res.status(400).json({message: 'O email é obrigatório!'})
+    }
+
+    if(!password){
+        return res.status(400).json({message: 'A senha é obrigatória!'})
+    }
 
     if(!user){
         return res.status(404).json({message: 'Usuário não encontrado!'})
     }
 
-    if(!email){
-        return res.status(400).json({message: 'O email é obrigatório!'})
-    }
-    if(!password){
-        return res.status(400).json({message: 'A senha é obrigatória!'})
-    }
+
+    const checkPassword = await bcrypt.compare(password, user.password);
     if(!checkPassword){
         return res.status(401).json({message: 'Senha inválida!'})
     }
-
+   
     try {
 
         const secret = process.env.SECRET;
@@ -82,9 +86,7 @@ router.post('/auth/login', async(req, res) =>{
     }catch (err) {
         return res.status(500).send({ error: 'Aconteceu algum erro e não foi possível fazer a autenticação. Tente novamente!' });
     }
-
 })
-
 
 
 //Consulta Usuários
@@ -147,7 +149,7 @@ router.delete('/:id', checkToken, async(req, res) => {
     }
 });
 
-
+//-----------------------------------------------------------------------
 function checkToken(req, res, next) {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(' ')[1];
