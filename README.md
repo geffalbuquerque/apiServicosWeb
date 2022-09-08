@@ -58,7 +58,7 @@ node nomedoarquivo.js
 ```
 Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, nesse caso o mongoose.
 
-## Utilizando as rotas
+## Utilizando as Rotas
 
 ### Criar um Usuário:
   
