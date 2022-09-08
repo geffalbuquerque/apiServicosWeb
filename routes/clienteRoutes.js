@@ -56,19 +56,19 @@ router.get('/', checkToken, async (req, res) => {
 })
 
 // READ - Encontrar Cliente pelo ID
-router.get('/findById/:id', checkToken, async (req, res) => {
-    const id = req.params.id
+router.get('/findByName/:name', checkToken, async (req, res) => {
+    const name = req.params.name
 
     try {
         
-        const cliente = await Cliente.findOne({_id: id})
+        const cliente = await Cliente.findOne({name: name})
 
         if(!cliente){
             res.status(404).json({message: "Cliente não encontrado."})
             return;
         }
 
-        res.status(200).json(cliente);
+        return res.status(200).json(cliente);
 
     }catch (err) {
         res.status(500).json({error:err})
