@@ -76,7 +76,7 @@ Obs: Deve ser executado o arquivo que possui a conexão com o banco de dados, ne
     "confirmpassword": "teste"
 }
 ```
-**Obs: Todas as senhas são são criptografadas no banco, por segurança as senhas ficam como hash.**
+**Obs: Todas as senhas são criptografadas no banco, por segurança as senhas ficam como hash.**
 
 ### Fazer Login com Usuário:
 
